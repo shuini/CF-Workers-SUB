@@ -19,7 +19,7 @@ https://sub.xf.free.hr/auto
 `
 
 let urls = [];
-let subconverter = "subapi-loadbalancing.pages.dev"; //在线订阅转换后端，目前使用CM的订阅转换功能。支持自建psub 可自行搭建https://github.com/bulianglin/psub
+let subconverter = "SUBAPI.fxxk.dedyn.io"; //在线订阅转换后端，目前使用CM的订阅转换功能。支持自建psub 可自行搭建https://github.com/bulianglin/psub
 let subconfig = "https://raw.githubusercontent.com/cmliu/ACL4SSR/main/Clash/config/ACL4SSR_Online_MultiCountry.ini"; //订阅配置文件
 let subProtocol = 'https';
 
@@ -182,7 +182,7 @@ export default {
 			} catch (error) {
 				console.error('处理 URL 时发生错误：', error);
 			}
-
+			if(env.WARP) 订阅转换URL += "|" + (await ADD(env.WARP)).join("|");
 			//修复中文错误
 			const utf8Encoder = new TextEncoder();
 			const encodedData = utf8Encoder.encode(req_data);
